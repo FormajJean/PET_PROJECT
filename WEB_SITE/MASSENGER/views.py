@@ -1,6 +1,10 @@
 from django.http import HttpResponseForbidden
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.views.generic.edit import CreateView
+
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
+
 from django.urls import reverse_lazy
 
 from .models import *
@@ -19,12 +23,8 @@ class CreatePPLView(CreateView):
     model = PPL
     form_class = PPLForms
     success_url = reverse_lazy('home')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['ppl_db'] = PPL.objects.all()
         return context
-
-def rubrics(request):
-    if request.user.has_perms(('layout.add', ))
-    else:
-        return HttpResponseForbidden('Вы не имеете допуска к списку рубрик')

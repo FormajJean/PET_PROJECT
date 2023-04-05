@@ -1,7 +1,7 @@
 {% extends 'base/BASIC.html' %}
 {% block title %}Создать новый ообъект{% endblock %}
-{% block contet %}
-<form method = 'post'>
+{% block content %}
+<form method = 'POST' enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type = 'submit' values = 'Добавить'>
