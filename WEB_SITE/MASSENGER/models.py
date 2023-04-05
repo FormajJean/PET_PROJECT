@@ -38,3 +38,4 @@ class Region(models.Model):
     class Meta:
         verbose_name_plural = 'Регионы'
         verbose_name = 'Регион'
+
