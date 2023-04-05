@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel = 'stylesheet' type="text/css" href = "{% static 'css/style.css' %}">
+</head>
+<body>
+<div class = 'container'>
+    <img src='{% static "images/logo.jpg" %}'><nobr>ЯЙЦЕ ГОЛОВЫЙ</nobr>
+    <div class = 'table'>
+        <table>
+            <tr>
+                <td><a href = "{% url 'home'%}">ГЛАВНАЯ</a></td>
+                <td><a href = "{% url 'add' %}">ДОБАВИТЬ</a></td>
+                <td><a href = "">ДЛЯ РАБОТОДАТЕЛЕЙ</a> </td>
+                <td><a href = "">ДЛЯ РАБОТНИКОВ</a> </td>
+                <td><a href = "">ВХОД</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

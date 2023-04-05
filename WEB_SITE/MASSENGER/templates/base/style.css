@@ -1,0 +1,28 @@
+td {
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+}
+table {
+    border-radius: 10px;
+    background-color: 33CCCC;
+    width: 90%;
+}
+
+div.container {
+    padding-top: 10px;
+}
+
+div.table {
+    border: solid 33CCCC;
+    margin-left: 50%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: 33CCCC;
+}
+
+td a {
+    font-size: 20px;
+    text-decoration: none;
+}
