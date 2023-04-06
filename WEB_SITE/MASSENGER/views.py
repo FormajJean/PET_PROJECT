@@ -1,5 +1,5 @@
 from django.http import HttpResponseForbidden
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views.generic.edit import CreateView
 
 from django.contrib.auth.forms import UserCreationForm
@@ -18,6 +18,29 @@ def home_window(request):
     context = {'ppl_db' : ppl_db}
     return render(request, template, context)
 
+def add(request):
+    if request.method == 'POST':
+        form = PPLForms(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        else:
+            print('fd')
+    else:
+        form = PPLForms
+    context = {'form' : form}
+    return render(request, 'layout/add.html', context)
+
+def for_employees(request):
+    ppl_db = PPL.objects.all()
+    template = 'layout/for_employees.html'
+    context = {'ppl_db': ppl_db}
+    return render(request, template, context)
+
+def for_employers(request):
+    ppl_db = PPL.objects.all()
+    template = 'layout/for_employers.html'
+    context = {'ppl_db' : ppl_db}
+    return render(request, template, context)
 class CreatePPLView(CreateView):
     template_name = 'layout/add.html'
     model = PPL

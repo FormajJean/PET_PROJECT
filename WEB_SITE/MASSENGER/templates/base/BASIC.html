@@ -8,14 +8,14 @@
 </head>
 <body>
 <div class = 'container'>
-    <img src='{% static "images/logo.jpg" %}'><nobr>ЯЙЦЕ ГОЛОВЫЙ</nobr>
+    <a href="{% url 'home' %}"><img src='{% static "images/logo.jpg" %}'></a><nobr>ЯЙЦЕ ГОЛОВЫЙ</nobr>
     <div class = 'table'>
         <table>
             <tr>
                 <td><a href = "{% url 'home'%}">ГЛАВНАЯ</a></td>
                 <td><a href = "{% url 'add' %}">ДОБАВИТЬ</a></td>
-                <td><a href = "">ДЛЯ РАБОТОДАТЕЛЕЙ</a> </td>
-                <td><a href = "">ДЛЯ РАБОТНИКОВ</a> </td>
+                <td><a href = "{% url 'for_employees' %}">ДЛЯ РАБОТОДАТЕЛЕЙ</a> </td>
+                <td><a href = "{% url 'for_employers' %}">ДЛЯ РАБОТНИКОВ</a> </td>
                 <td><a href = "">ВХОД</a></td>
             </tr>
         </table>

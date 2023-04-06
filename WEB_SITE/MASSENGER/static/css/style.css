@@ -98,10 +98,37 @@ div.person table tr td form {
 
 div.person table tr td img{
     border-radius: 10px
+    width: 100px;
+    height: 100px;
 }
 
 div.person table tr td.info_about_skills {
     width: 940px;
-    border-right: solid 1px black;
+}
+div.container_form {
+    border-top: solid;
+    border-bottom: solid;
+    margin-top: 30px;
+}
+div.forms_add {
+    width: 400px;
+    padding: 20px;
+    padding-left: 20px;
+    margin-left: 35%;
+}
+
+div.forms_add p input {
+    border-radius: 6px;
+    width: 100%;
+}
+
+div.forms_add p textarea {
+    border-radius: 6px;
+    width: 100%;
+}
+
+label {
+    font-size: 20px;
+    width: 200px;
 }
 

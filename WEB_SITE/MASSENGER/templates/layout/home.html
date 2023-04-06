@@ -1,8 +1,9 @@
 {% extends 'base/BASIC.html' %}
 {% block title %}ГЛАВНАЯ{% endblock %}
 {% block content %}
+  <h3>СКОРО ТУТ БУДУТ ФИЛЬТРАЦИИ</h3>
   {% for info in ppl_db %}
-  <div class = 'person' border = 'solid'>
+  <div class = 'person'>
     <table>
       <tr>
         <td>
@@ -41,4 +42,5 @@
     </table>
   </div>
   {% endfor %}
+<hr>
 {% endblock %}

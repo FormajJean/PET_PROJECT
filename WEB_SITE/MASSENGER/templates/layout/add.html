@@ -1,9 +1,16 @@
 {% extends 'base/BASIC.html' %}
 {% block title %}Создать новый ообъект{% endblock %}
 {% block content %}
-<form method = 'POST' enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type = 'submit' values = 'Добавить'>
-</form>
+<div class = 'container_form'>
+    <div class = 'forms_add'>
+        <form method = 'POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            <!--{ form.as_p }}-->
+            {% for forming in form %}
+                <p><label>{{ forming.label_tag }} </label>{{ forming }}</p>
+            {% endfor %}
+            <input  required type = 'submit' values = 'Добавить'>
+        </form>
+    </div>
+</div>
 {% endblock %}

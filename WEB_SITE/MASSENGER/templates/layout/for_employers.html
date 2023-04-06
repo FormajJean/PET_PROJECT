@@ -1,0 +1,48 @@
+{% extends 'base/BASIC.html' %}
+{% block title %}Для работодателей{% endblock %}
+{% block content %}
+  <h3>СКОРО ТУТ БУДУТ ФИЛЬТРАЦИИ</h3>
+        {% for info in ppl_db %}
+            {% if info.what_are_you_looking == 'Ищу работника'%}
+              <div class = 'person'>
+                <table>
+                  <tr>
+                    <td>
+                  {% if info.image %}
+                    <img src="{{ MEDIA_URL }}{{ info.image.url }}", width="100", height="100">
+                  {% endif %}
+                    </td>
+                    <td class = 'info'>
+                      ФИО: {{ info.last_name }} {{ info.first_name }} {{info.surname }}
+                      <br>
+                      <hr>
+                      Возраст: {{ info.age }}
+                      <br>
+                      <hr>
+                      Профессия: {{ info.profession }}
+                      <br>
+                      <hr>
+                      Что ищет: {{ info.what_are_you_looking }}
+                      <br>
+                      <hr>
+                      Регион: {{ info.region }}
+                    </td>
+                    <td class = 'info_about_skills'>
+                      {{ info.information_about_skills }}
+                    </td>
+                    <td>
+                      <form action = '1.html' method = 'GET'>
+                        <input type="submit" value = 'Сообщение' class = 'message'>
+                      </form>
+                      <form action = '2.html' method = 'GET'>
+                        <input type="submit" value = 'Отликнуться' class = 'subscribe'>
+                      </form>
+                    </td>
+                    <hr>
+                  </tr>
+                </table>
+              </div>
+            {% endif %}
+        {% endfor %}
+<hr>
+{% endblock %}
