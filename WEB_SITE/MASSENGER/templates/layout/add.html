@@ -1,15 +1,15 @@
 {% extends 'base/BASIC.html' %}
-{% block title %}Создать новый ообъект{% endblock %}
+{% block title %}Создать новый объект{% endblock %}
+{% block search %}{% endblock %}
 {% block content %}
 <div class = 'container_form'>
     <div class = 'forms_add'>
         <form method = 'POST' enctype="multipart/form-data">
             {% csrf_token %}
-            <!--{ form.as_p }}-->
             {% for forming in form %}
-                <p><label>{{ forming.label_tag }} </label>{{ forming }}</p>
+                <p><label>{{ forming.label_tag }}</label>{{ forming }}</p>
             {% endfor %}
-            <input  required type = 'submit' values = 'Добавить'>
+            <input  required type = 'submit' value = 'Добавить'>
         </form>
     </div>
 </div>

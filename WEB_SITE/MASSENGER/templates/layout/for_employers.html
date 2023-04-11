@@ -1,7 +1,6 @@
 {% extends 'base/BASIC.html' %}
 {% block title %}Для работодателей{% endblock %}
 {% block content %}
-  <h3>СКОРО ТУТ БУДУТ ФИЛЬТРАЦИИ</h3>
         {% for info in ppl_db %}
             {% if info.what_are_you_looking == 'Ищу работника'%}
               <div class = 'person'>

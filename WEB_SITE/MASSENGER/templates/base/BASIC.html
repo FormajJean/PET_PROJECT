@@ -21,6 +21,13 @@
         </table>
     </div>
 </div>
+{% block search %}
+<div>
+    <form action = '{% url "search" %}' method = 'get'>
+      <p><input type="search" placeholder="Введите ключевое слово" name = 'search'> <button>Поиск</button></p>
+    </form>
+  </div>
+{% endblock %}
 <div class="content">
     {% block content %}
     {% endblock %}
