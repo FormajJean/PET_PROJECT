@@ -8,7 +8,7 @@ class PPL(models.Model):
         ('Ищу работу', 'Ищу работу'),
         ('Ищу работника', 'Ищу работника'),
     )
-    user = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = 'Пользователь')
+    user = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, verbose_name = 'Пользователь')
     first_name = models.CharField(max_length = 40, verbose_name = 'Имя')
     last_name = models.CharField(max_length = 40, verbose_name = 'Фамилия')
     surname = models.CharField(max_length = 40, verbose_name = 'Отчество/Матчество')
