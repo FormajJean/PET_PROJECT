@@ -1,0 +1,13 @@
+{% extends 'base/basic.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block search %}{% endblock %}
+{% block content %}
+    <form method = 'POST' class = 'registration'>
+        <h2>Регистрация</h2>
+        {% csrf_token %}
+        {% for i in form %}
+        <p><label class="register_label">{{ i.label_tag }} {{ i }}</label></p>
+        {% endfor %}
+        <input type="submit" value="Регистрация">
+    </form>
+{% endblock %}

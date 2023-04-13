@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'MASSENGER.apps.MassengerConfig',
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

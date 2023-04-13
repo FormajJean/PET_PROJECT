@@ -1,5 +1,6 @@
 {% extends 'base/BASIC.html' %}
 {% block title %}ГЛАВНАЯ{% endblock %}
+{% block search %}{% endblock %}
 {% block content %}
   {% for info in ppl_db %}
   <div class = 'person'>
@@ -29,11 +30,12 @@
           {{ info.information_about_skills }}
         </td>
         <td class = 'function'>
-          <form>
-            <input type="submit" value = 'Отликнуться' class = 'subscribe'>
+          <form action = '{% url "delete" info.pk %}' method = 'POST'>
+            {% csrf_token %}
+            <input type="submit" value = 'Удалить' class = 'subscribe'>
           </form>
-          <form>
-            <input type="submit" value = 'Написать' class = 'message'>
+          <form action = '{% url "change" info.pk %}' method = 'GET'>
+            <input type="submit" value = 'Изменить' class = 'message'>
           </form>
         </td>
         <hr>

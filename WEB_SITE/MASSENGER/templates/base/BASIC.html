@@ -13,10 +13,17 @@
         <table>
             <tr>
                 <td><a href = "{% url 'home'%}">ГЛАВНАЯ</a></td>
-                <td><a href = "{% url 'add' %}">ДОБАВИТЬ</a></td>
-                <td><a href = "{% url 'for_employees' %}">ДЛЯ РАБОТОДАТЕЛЕЙ</a> </td>
-                <td><a href = "{% url 'for_employers' %}">ДЛЯ РАБОТНИКОВ</a> </td>
-                <td><a href = "">ВХОД</a></td>
+                {% if request.user.is_authenticated %}
+                    <td><a href = "{% url 'add' %}">ДОБАВИТЬ</a></td>
+                {% endif %}
+                <td><a href = "{% url 'for_employees' %}">ДЛЯ РАБОТОДАТЕЛЕЙ</a></td>
+                <td><a href = "{% url 'for_employers' %}">ДЛЯ РАБОТНИКОВ</a></td>
+                {% if request.user.is_authenticated %}
+                    <td><a href="{% url 'logout' %}">Выйти</a></td>
+                {% else %}
+                    <td><a href="{% url 'login' %}">Вход</a></td>
+                    <td><a href="{% url 'register' %}">Регистрация</a></td>
+                {% endif %}
             </tr>
         </table>
     </div>

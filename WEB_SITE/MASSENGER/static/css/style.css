@@ -20,7 +20,7 @@ div.container {
 div.table {
     padding-top: 15px;
     padding-bottom: 15px;
-    margin-left: 49%;
+    margin-left: 40%;
     margin-top: 13px;
 }
 
@@ -70,29 +70,28 @@ div.person table tr td.info {
     border-left: solid 1px black;
 }
 
-div.person table tr td form input.message{
+div.person table tr td form input{
     color: white;
     padding: 20px;
     font-size: 17px;
     border-radius: 5px;
     border: solid green;
     background: green;
-    margin-top: 5px;
     width: 500px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
+div.person table tr td form input.message{
+    border: solid green;
+    background: green;
+    cursor: pointer;
+}
 div.person table tr td form input.subscribe{
-    color: white;
-    padding: 20px;
-    font-size: 17px;
-    border-radius: 5px;
     border: solid red;
     background: red;
-    margin-top: 10px;
-    width: 500px;
-    box-sizing: border-box;
     cursor: pointer;
+    margin-top: 7px;
 }
 
 div.person table tr td form {
@@ -138,4 +137,23 @@ label {
 
 .container .seacrh {
     width: 100px
+}
+
+
+.register_label {
+    display: block;
+    width: 350px;
+}
+
+.register_label{
+    text-align: right;
+}
+
+.registration {
+    width: 450px;
+    margin-left: 670px;
+    margin-top: 50px;
+    height: 400px;
+    padding-top: 100px;
+    text-align: center;
 }

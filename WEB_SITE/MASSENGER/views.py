@@ -1,16 +1,17 @@
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, HttpResponse, redirect
-from django.views.generic.edit import CreateView
+
+
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
+
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views import View
 from django.views.generic.list import ListView
-
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
-
 from django.urls import reverse_lazy
 
-from .models import *
-from .forms import *
+from .models import PPL, Region
+from .forms import PPLForms, RegisterForm, LoginAuthenticatedForm
 
 # Create your views here.
 
@@ -64,10 +65,16 @@ class CreatePPLView(CreateView):
         return context
 
 
+class DeleteSummary(DeleteView):
+    model = PPL
+    success_url = reverse_lazy('home')
+
+
 class Search(ListView):
-    template_name = 'layout/home.html'
-    context_object_name = 'ppl_db'
-    paginate_by = 5
+    template_name = 'layout/home.html' # Ссылка на HTML файл
+    context_object_name = 'ppl_db' # Делает переменную с объектом ppl_db
+    paginate_by = 5 # Максимальное количество записей
+
     def get_queryset(self):
         print(self.request.GET)
         return PPL.objects.filter(profession__icontains=self.request.GET.get('search', ''))
@@ -77,3 +84,47 @@ class Search(ListView):
         context = super().get_context_data(**kwargs)
         context['p'] = self.request.GET.get('p')
         return context
+
+class ChangeSummary(UpdateView):
+    template_name = 'layout/change.html'
+    form_class = PPLForms
+    model = PPL
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['ppl_db'] = PPL.objects.all()
+        return context
+
+class Profile(View):
+    def get(self, request):
+        template = 'layout/profile.html'
+        context = {'ppl_db' : PPL.objects.all()}
+        return render(request, template, context)
+
+class RegisterUser(CreateView):
+    template_name = 'layout/register.html'
+    form_class = RegisterForm
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Регистрация'
+        context['ppl_db'] = PPL.objects.all()
+        return context
+
+class AuthenticationUser(LoginView):
+    form_class = LoginAuthenticatedForm
+    template_name = 'layout/login.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Авторизация'
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
